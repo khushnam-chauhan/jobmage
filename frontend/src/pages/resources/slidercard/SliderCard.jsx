@@ -8,6 +8,7 @@ import './slider.css';
 const SliderCard = () => {
   const [slides, setSlides] = useState([]);
 
+  // Fetch slider data from the server
   useEffect(() => {
     const fetchSlides = async () => {
       try {
@@ -20,16 +21,15 @@ const SliderCard = () => {
     fetchSlides();
   }, []);
 
+  // Ensure links have the correct format
   const formatLink = (link) => {
-    // Check if link starts with http:// or https://
     if (!/^https?:\/\//i.test(link)) {
-      // If not, add https:// as the default protocol
       return `https://${link}`;
     }
-    // Otherwise, return the link as is
     return link;
   };
 
+  // Slider settings
   const settings = {
     dots: true,
     infinite: true,
@@ -45,7 +45,7 @@ const SliderCard = () => {
       <Slider {...settings}>
         {slides.map(({ _id, image, link }) => (
           <div key={_id} className="slider-card-container">
-            <a href={formatLink(link)} target="_blank" rel="noopener noreferrer" className='slider-link'>
+            <a href={formatLink(link)} target="_blank" rel="noopener noreferrer" className="slider-link">
               <img src={image} alt={`Slide ${_id}`} className="slider-card-image" />
             </a>
           </div>

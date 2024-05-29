@@ -35,15 +35,28 @@ const ResourceManagement = () => {
   }, []);
 
   const handleDelete = async (type, id) => {
+    console.log('Deleting resource with ID:', id); // Log the ID
     try {
       await axios.delete(`http://localhost:5001/api/${type}/${id}`);
-      setBooks(books.filter(book => book._id !== id));
-      setCourses(courses.filter(course => course._id !== id));
-      setBanners(banners.filter(banner => banner._id !== id));
+      switch (type) {
+        case 'books':
+          setBooks(books.filter(book => book._id !== id));
+          break;
+        case 'courses':
+          setCourses(courses.filter(course => course._id !== id));
+          break;
+        case 'sliderData':
+          setBanners(banners.filter(banner => banner._id !== id));
+          break;
+        default:
+          break;
+      }
     } catch (error) {
       console.error(`Error deleting ${type}:`, error);
     }
   };
+  
+
 
   const handleEdit = (type, resource) => {
     setCurrentResource({ type, ...resource });
@@ -78,7 +91,7 @@ const ResourceManagement = () => {
       }
     } catch (error) {
       console.error(`Error updating ${type}:`, error);
-    }
+    } 
   };
 
   return (

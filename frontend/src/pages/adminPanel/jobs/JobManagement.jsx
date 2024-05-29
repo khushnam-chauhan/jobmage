@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getAllJobs, deleteJob, editJob } from '../../../utils/api'
+import { getAllJobs, deleteJob, editJob } from '../../../utils/api';
 import { useNavigate } from 'react-router-dom';
-import './JobManagement.css'; 
+import './JobManagement.css';
 
 function JobManagement() {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [editingJobId, setEditingJobId] = useState(null);
+  const [expandedJobId, setExpandedJobId] = useState(null);
+  const [expandedApplyUrlJobId, setExpandedApplyUrlJobId] = useState(null);
   const [editFormData, setEditFormData] = useState({
     title: '',
     company: '',
@@ -16,9 +18,9 @@ function JobManagement() {
     postedOn: '',
     description: '',
     apply: '',
-    applyBy:'',
-    salary:'',
-    skills:''
+    applyBy: '',
+    salary: '',
+    skills: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -49,9 +51,9 @@ function JobManagement() {
       postedOn: '',
       description: '',
       apply: '',
-      applyBy:'',
-      salary:'',
-      skills:''
+      applyBy: '',
+      salary: '',
+      skills: ''
     });
   };
 
@@ -69,9 +71,9 @@ function JobManagement() {
           postedOn: '',
           description: '',
           apply: '',
-          applyBy:'',
-          salary:'',
-          skills:''
+          applyBy: '',
+          salary: '',
+          skills: ''
         });
       })
       .catch(error => {
@@ -99,12 +101,21 @@ function JobManagement() {
     }));
   };
 
+  // Function to truncate text to 10 words
+  const truncateText = (text) => {
+    const words = text.split(' ');
+    if (words.length <= 10) {
+      return text;
+    }
+    return words.slice(0, 10).join(' ') + '...';
+  };
+
   return (
     <div className="job-management-container">
       <div className='manage-head'>
         <h2>Job Management</h2>
         <button className="back-button" onClick={() => navigate(-1)}>Back</button>
-        </div>
+      </div>
       {errorMessage && <p className="error">{errorMessage}</p>}
       <table className="job-table">
         <thead>
@@ -117,7 +128,7 @@ function JobManagement() {
             <th>Posted On</th>
             <th>Description</th>
             <th>Apply URL</th>
-            <th>Salary </th>
+            <th>Salary</th>
             <th>Skills</th>
             <th>Apply By</th>
             <th>Actions</th>
@@ -132,10 +143,70 @@ function JobManagement() {
               <td>{editingJobId === job._id ? <input type="text" name="type" value={editFormData.type} onChange={handleInputChange} /> : job.type}</td>
               <td>{editingJobId === job._id ? <input type="text" name="postedBy" value={editFormData.postedBy} onChange={handleInputChange} /> : job.postedBy}</td>
               <td>{editingJobId === job._id ? <input type="date" name="postedOn" value={editFormData.postedOn} onChange={handleInputChange} /> : job.postedOn}</td>
-              <td>{editingJobId === job._id ? <textarea name="description" value={editFormData.description} onChange={handleInputChange} /> : job.description}</td>
-              <td>{editingJobId === job._id ? <input type="text" name="apply" value={editFormData.apply} onChange={handleInputChange} /> : job.apply}</td>
-              <td>{editingJobId === job._id ? <input type="text" name="salary" value={editFormData.salary} onChange={handleInputChange} /> : job.salary}</td>
-              <td>{editingJobId === job._id ? <input type="text" name="skills" value={editFormData.skills} onChange={handleInputChange} /> : job.skills}</td>
+              <td>
+                {editingJobId === job._id ? 
+                  <textarea name="description" value={editFormData.description} onChange={handleInputChange} /> 
+                  : 
+                  <div id={`description-${job._id}`} className="description-cell">
+                    <div className="text">
+                      {expandedJobId === job._id ? job.description : truncateText(job.description)}
+                    </div>
+                    {job.description.split(' ').length > 10 && (
+                      <button className="expand-button" onClick={() => setExpandedJobId(expandedJobId === job._id ? null : job._id)}>
+                        {expandedJobId === job._id ? 'Show Less' : 'Expand'}
+                      </button>
+                    )}
+                  </div>
+                }
+              </td>
+              <td>
+                {editingJobId === job._id ? 
+                  <textarea name="apply" value={editFormData.apply} onChange={handleInputChange} /> 
+                  : 
+                  <div id={`apply-${job._id}`} className="apply-cell">
+                    <div className="text">
+                      {expandedApplyUrlJobId === job._id ? job.apply : truncateText(job.apply)}
+                    </div>
+                    {job.apply.split(' ').length > 10 && (
+                      <button className="expand-button" onClick={() => setExpandedApplyUrlJobId(expandedApplyUrlJobId === job._id ? null : job._id)}>
+                        {expandedApplyUrlJobId === job._id ? 'Show Less' : 'Expand'}
+                      </button>
+                    )}
+                  </div>
+                }
+              </td>
+              <td>
+                {editingJobId === job._id ? 
+                  <textarea name="salary" value={editFormData.salary} onChange={handleInputChange} /> 
+                  : 
+                  <div id={`salary-${job._id}`} className="salary-cell">
+                    <div className="text">
+                      {expandedJobId === job._id ? job.salary : truncateText(job.salary)}
+                    </div>
+                    {job.salary.split(' ').length > 10 && (
+                      <button className="expand-button" onClick={() => setExpandedJobId(expandedJobId === job._id ? null : job._id)}>
+                        {expandedJobId === job._id ? 'Show Less' : 'Expand'}
+                      </button>
+                    )}
+                  </div>
+                }
+              </td>
+              <td>
+                {editingJobId === job._id ? 
+                  <textarea name="skills" value={editFormData.skills} onChange={handleInputChange} /> 
+                  : 
+                  <div id={`skills-${job._id}`} className="skills-cell">
+                    <div className="text">
+                      {expandedJobId === job._id ? job.skills : truncateText(job.skills)}
+                    </div>
+                    {job.skills.split(' ').length > 10 && (
+                      <button className="expand-button" onClick={() => setExpandedJobId(expandedJobId === job._id ? null : job._id)}>
+                        {expandedJobId === job._id ? 'Show Less' : 'Expand'}
+                      </button>
+                    )}
+                  </div>
+                }
+              </td>
               <td>{editingJobId === job._id ? <input type="date" name="applyBy" value={editFormData.applyBy} onChange={handleInputChange} /> : job.applyBy}</td>
 
               <td className="action-buttons">

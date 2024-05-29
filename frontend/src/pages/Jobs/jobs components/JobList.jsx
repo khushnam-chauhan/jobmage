@@ -11,7 +11,7 @@ function JobList({ jobs }) {
           <p>Company: {job.company}</p>
           <p>Location: {job.location}</p>
           <p>Type: {job.type}</p>
-          <p>Posted by: {job.postedBy}</p>
+          <p>Stipend : {job.salary}</p>
           <p>Posted on: {job.postedOn}</p>
           <Link className='button' to={`/job/${job._id}`}>Details</Link>
         </div>

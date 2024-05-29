@@ -49,7 +49,7 @@ const ChatBot = ({ isOpen, toggleChat }) => {
     <div className={`chatbot-container ${isOpen ? 'open' : 'closed'}`}>
       <div className="chatbot-header">
         <h2>Sage</h2>
-        <button onClick={toggleChat}>X</button>
+        <button onClick={toggleChat}></button>
       </div>
       <div className="chatbot-body">
         {messages.map((message, index) => (

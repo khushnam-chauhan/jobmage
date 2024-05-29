@@ -197,21 +197,22 @@ app.patch('/api/jobs/:jobId', async (req, res) => {
   }
 });
 
-
-// slider model
 const SliderData = mongoose.model('SliderData', {
   image: String,
   link: String,
 });
 
+
 // For storing slider data
 app.post('/api/sliderData', async (req, res) => {
   try {
     const { image, link } = req.body;
+    console.log('Received request:', req.body); // Log the request body
     const newSliderData = new SliderData({ image, link });
     await newSliderData.save();
     res.status(201).json({ message: 'Slider data created', sliderId: newSliderData._id });
   } catch (error) {
+    console.error('Error saving slider data:', error); // Log any errors
     res.status(400).json({ error: error.message });
   }
 });
@@ -220,12 +221,44 @@ app.post('/api/sliderData', async (req, res) => {
 // For fetching slider data
 app.get('/api/sliderData', async (req, res) => {
   try {
-    const sliderData = await SliderData.find();
+    const sliderData = await SliderData.find({}, 'image link'); // Fetch only 'image' and 'link' fields
     res.status(200).json(sliderData);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+// For updating slider data
+app.put('/api/sliderData/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { image, link } = req.body;
+    const updatedSliderData = await SliderData.findByIdAndUpdate(id, { image, link }, { new: true });
+    if (!updatedSliderData) {
+      return res.status(404).json({ message: 'Slider data not found' });
+    }
+    res.status(200).json({ message: 'Slider data updated', updatedSliderData });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// For deleting slider data
+app.delete('/api/sliderData/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedSliderData = await SliderData.findByIdAndDelete(id);
+    if (!deletedSliderData) {
+      return res.status(404).json({ message: 'Slider data not found' });
+    }
+    res.status(200).json({ message: 'Slider data deleted', deletedSliderData });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
 
 // course and book model
 const Course = mongoose.model('Course', {
@@ -262,6 +295,27 @@ app.post('/api/courses', async (req, res) => {
   }
 });
 
+// PUT request for updating a course
+app.put('/api/courses/:id', async (req, res) => {
+  try {
+    const { title, image, apply } = req.body;
+    const updatedCourse = await Course.findByIdAndUpdate(
+      req.params.id,
+      { title, image, apply },
+      { new: true, runValidators: true } // Options: new to return the updated document, runValidators to run schema validations
+    );
+
+    if (!updatedCourse) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    res.json(updatedCourse);
+  } catch (error) {
+    res.status(400).json({ error: 'Invalid request' });
+  }
+});
+
+
 // GET request for books
 app.get('/api/books', async (req, res) => {
   try {
@@ -283,6 +337,27 @@ app.post('/api/books', async (req, res) => {
     res.status(400).json({ error: 'Invalid request' });
   }
 });
+
+// PUT request for updating a book
+app.put('/api/books/:id', async (req, res) => {
+  try {
+    const { title, image, apply } = req.body;
+    const updatedBook = await Book.findByIdAndUpdate(
+      req.params.id,
+      { title, image, apply },
+      { new: true, runValidators: true } // Options: new to return the updated document, runValidators to run schema validations
+    );
+
+    if (!updatedBook) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.json(updatedBook);
+  } catch (error) {
+    res.status(400).json({ error: 'Invalid request' });
+  }
+});
+
 
 
 // User profile route

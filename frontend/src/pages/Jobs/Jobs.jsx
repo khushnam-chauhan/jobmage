@@ -82,6 +82,7 @@ function Jobs() {
           <option value="Internship">Internship</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
+          <option value="Research-Intern">Research-Intern</option>
         </select>
       </div>
       <div className="job-list-container">

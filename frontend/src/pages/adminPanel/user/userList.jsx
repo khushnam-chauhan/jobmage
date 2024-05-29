@@ -44,7 +44,7 @@ function UserList() {
   };
 
   const handleBackClick = () => {
-    navigate('/after/admin'); // Navigate to the admin section of the Afterlogin page
+    navigate(-1);
   };
 
   return (

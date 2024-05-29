@@ -1,86 +1,146 @@
-.job-management-container{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 10px;
+.job-management-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
 }
 
-.manage-head{
-display: flex;
-justify-content: space-between;
+.manage-head {
+  display: flex;
+  justify-content: space-between;
 }
 
 .job-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .job-table th,
-  .job-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .job-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .job-table input,
-  .job-table textarea {
-    width: 100%;
-    padding: 5px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .edit-button,
-  .delete-button,
-  .save-button,
-  .cancel-button {
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .edit-button {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .save-button,
-  .cancel-button {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .error {
-    color: #dc3545;
-  }
-  
-  .back-button {
-    margin-top: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    justify-self: flex-start;
-    border-radius: 4px;
-    background-color: #6c757d;
-    color: white;
-  }
-  
-  .back-button:hover {
-    background-color: #5a6268;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.job-table th,
+.job-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.job-table th {
+  background-color: #f2f2f2;
+}
+
+.job-table input,
+.job-table textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.save-button,
+.cancel-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.error {
+  color: #dc3545;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  justify-self: flex-start;
+  border-radius: 4px;
+  background-color: #6c757d;
+  color: white;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.job-management-container {
+  padding: 20px;
+}
+
+.manage-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.job-table th, .job-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.description-cell, .apply-cell, .salary-cell, .skills-cell {
+  max-height: 60px; 
+  max-width: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action-buttons button {
+  margin-right: 5px;
+}

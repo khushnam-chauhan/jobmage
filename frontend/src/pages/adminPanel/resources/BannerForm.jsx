@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './postForm.css';
 
 const BannerForm = () => {
   const [image, setImage] = useState('');
   const [link, setLink] = useState('');
-  const category = 'banner'; 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,6 +20,7 @@ const BannerForm = () => {
       setLink('');
     } catch (error) {
       console.error('Error adding resource:', error);
+      alert('Failed to add resource. Please try again.');
     }
   };
 
@@ -30,7 +30,7 @@ const BannerForm = () => {
 
   return (
     <div className="postform">
-      <h1>Add Resource</h1>
+      <h1>Add Banner</h1>
       
       <label>
         Image URL:
@@ -39,6 +39,7 @@ const BannerForm = () => {
           value={image}
           onChange={(e) => setImage(e.target.value)}
           className="postform-input"
+          placeholder="Enter image URL"
         />
       </label>
       
@@ -49,11 +50,12 @@ const BannerForm = () => {
           value={link}
           onChange={(e) => setLink(e.target.value)}
           className="postform-input"
+          placeholder="Enter link URL"
         />
       </label>
       
-      <button onClick={handleSubmit} className="postform-button">Add Resource</button>
-       <button className='bac-button' onClick={handleGoBack}>Back</button>
+      <button onClick={handleSubmit} className="postform-button">Add Banner</button>
+      <button className="back-button" onClick={handleGoBack}>Back</button>
     </div>
   );
 };

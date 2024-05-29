@@ -19,7 +19,7 @@ function LandingPage() {
       <Navbar userData={userData} />
       <Home />
       <Services />
-      <Contact />
+      <Contact  />
       <Footer />
     </div>
   );
