@@ -19,7 +19,6 @@ const Books = () => {
 
   return (
     <div className="books">
-      <h2 className='resources-head'>Top Books</h2>
       <Card items={books} />
     </div>
   );

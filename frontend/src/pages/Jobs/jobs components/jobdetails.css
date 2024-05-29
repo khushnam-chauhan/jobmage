@@ -1,54 +1,53 @@
-.job-details {
+.job-details-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.job-details h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.job-title {
+  color: #333333;
 }
 
-.job-details p {
-  margin-bottom: 5px;
+.job-info {
+  margin-top: 20px;
 }
 
-.job-details .description,
-.job-details .skills {
-  margin-top: 10px;
+.job-info p {
+  margin: 10px 0;
 }
 
-.job-details .apply-button {
+.description, .skills {
+  white-space: pre-line;
+}
+
+.apply-button, .back-button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.job-details .apply-button:hover {
+.apply-button:hover, .back-button:hover {
   background-color: #0056b3;
 }
 
-.job-details .back-button {
-  margin-top: 10px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #ccc;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.job-details .back-button:hover {
-  background-color: #999;
+.error-message {
+  color: #ff0000;
+  text-align: center;
 }

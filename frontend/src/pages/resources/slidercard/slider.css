@@ -1,8 +1,9 @@
 .slider-card {
   height: 200px;
   width: calc(96vw - 320px);
-  background: #000;
+  background: white;
   margin-bottom: 2rem;
+  padding-left: 50px;
 }
 
 .slider-card-container {
@@ -11,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: blue;
 }
 

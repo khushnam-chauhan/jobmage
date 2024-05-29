@@ -5,6 +5,7 @@ import JobDetails from "./jobs components/JobDetails";
 import useUserData from "../../component/Hooks/useUserdata";
 import "./jobs.css";
 import Loader from "../../component/Loader/loader";
+import Footer from "../../component/footer/Footer";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -42,44 +43,51 @@ function Jobs() {
       job.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (filterType === "" || job.type.toLowerCase() === filterType.toLowerCase())
   );
-  
 
   if (isLoading) {
     return (
-      <div>
-        {" "}
-        <Loader />{" "}
+      <div className="loader-container">
+        <Loader />
       </div>
     );
   }
+
   const isAdminOrEmployer =
     userData && (userData.role === "admin" || userData.role === "employer");
 
   return (
-    <div className="jobs">
-      <div className="jobs-opt">
+    <div className="jobs-container">
+      <div className="jobs-header">
         <h1>Jobs and Internships</h1>
         {isAdminOrEmployer && (
-          <Link to="/postJob" className="linc-button">
+          <Link to="/postJob" className="post-button">
             <h4>Post a Job</h4>
           </Link>
         )}
       </div>
-      <div className="search-filter">
+      <div className="search-filter-container">
         <input
           type="text"
+          className="search-input"
           placeholder="Search by job title"
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <select value={filterType} onChange={handleFilterChange}>
+        <select
+          className="filter-select"
+          value={filterType}
+          onChange={handleFilterChange}
+        >
           <option value="">All Types</option>
           <option value="Internship">Internship</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
         </select>
       </div>
-      {id ? <JobDetails jobId={id} /> : <JobList jobs={filteredJobs} />}{" "}
+      <div className="job-list-container">
+        {id ? <JobDetails jobId={id} /> : <JobList jobs={filteredJobs} />}
+      </div>
+      <Footer />
     </div>
   );
 }

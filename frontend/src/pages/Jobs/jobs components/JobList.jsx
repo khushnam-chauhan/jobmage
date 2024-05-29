@@ -1,6 +1,6 @@
-// JobList.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './JobList.css';
 
 function JobList({ jobs }) {
   return (

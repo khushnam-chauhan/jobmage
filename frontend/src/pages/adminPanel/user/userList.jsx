@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { deleteUser, changeUserRole, getAllUsers } from '../../../utils/api';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './UserList.css'; // Import the CSS file
 
 function UserList() {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -41,10 +43,14 @@ function UserList() {
     }
   };
 
+  const handleBackClick = () => {
+    navigate('/after/admin'); // Navigate to the admin section of the Afterlogin page
+  };
+
   return (
     <div className="user-list-container">
       <h1>User List</h1>
-      <button className="back-button" onClick={() => window.history.back()}>Back</button>
+      <button className="back-button" onClick={handleBackClick}>Back</button>
       <table className="user-table">
         <thead>
           <tr>

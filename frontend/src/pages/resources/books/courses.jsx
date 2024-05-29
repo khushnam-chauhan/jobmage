@@ -19,7 +19,6 @@ const Courses = () => {
 
   return (
     <div className="courses">
-      <h2 className='resources-head'>Top Featured courses</h2>
       <Card items={courses} />
     </div>
   );

@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 import './ChatBot.css'; // Make sure to create this CSS file
 
 const ChatBot = ({ isOpen, toggleChat }) => {
   const [messages, setMessages] = useState([
-    { text: 'Welcome! i am TechSage a career counselling chatbot by JobMage. How can I help you today?', isBot: true }
+    { text: 'Welcome! I am TechSage, a career counselling chatbot by JobMage. How can I help you today?', isBot: true }
   ]);
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
@@ -12,14 +13,23 @@ const ChatBot = ({ isOpen, toggleChat }) => {
     setInputValue(e.target.value);
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputValue.trim() === '') return;
 
-    setMessages([
-      ...messages,
-      { text: inputValue, isBot: false },
-      { text: 'Sure, let me get that information for you.', isBot: true } // Simulated bot response
-    ]);
+    const userMessage = { message: inputValue };
+    setMessages((prevMessages) => [...prevMessages, { text: inputValue, isBot: false }]);
+
+    try {
+      const response = await axios.post('http://localhost:5000/chat', userMessage);
+
+      const botMessages = response.data.map((res) => ({ text: res.text, isBot: true }));
+      setMessages((prevMessages) => [...prevMessages, ...botMessages]);
+    } catch (error) {
+      console.error('Error sending message to Flask server:', error);
+      const errorMessage = { text: 'Sorry, there was an error. Please try again.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, errorMessage]);
+    }
+
     setInputValue('');
   };
 
@@ -39,7 +49,7 @@ const ChatBot = ({ isOpen, toggleChat }) => {
     <div className={`chatbot-container ${isOpen ? 'open' : 'closed'}`}>
       <div className="chatbot-header">
         <h2>Sage</h2>
-        <button onClick={toggleChat}></button>
+        <button onClick={toggleChat}>X</button>
       </div>
       <div className="chatbot-body">
         {messages.map((message, index) => (

@@ -1,131 +1,98 @@
-/* Sidebar Container */
+/* Sidebar */
 .sidebar {
-  width: 250px;
-  min-height: 100vh;
-  background-color: #ffffff;
-  padding: 20px;
-  box-sizing: border-box;
   position: fixed;
   top: 0;
-  left: -250px;
-  transition: left 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-250px);
 }
 
 .sidebar.open {
-  left: 0;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+  transform: translateX(0);
 }
 
-/* Sidebar Content */
 .sidebar-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  height: 100%;
 }
 
-.user-info {
-  padding-bottom: 1.5rem;
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
-
 
 .sidebar-logo {
-  margin-bottom: 1rem;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .sidebar-logo .Link {
+  color: #fff;
   text-decoration: none;
-  font-size: 28px;
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  justify-content: center;
 }
 
-.blue {
-  color: #2196f3; /* Blue color for "Job" */
+.sidebar-user {
+  padding: 20px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
 }
 
-.green {
-  color: #4caf50; /* Green color for "Mage" */
+.user-info {
+  font-size: 16px;
 }
 
-/* Sidebar Links */
 .sidebar-links {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.sidebar-user{
-  display: flex;
-  justify-content: center;
-
+  flex-grow: 1;
+  padding: 20px;
 }
 
 .section-links {
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  border-radius: 5px;
-  color: #555;
-}
-
-.section-links:hover {
-  background-color: #f0f0f0;
-  transform: translateX(5px);
-}
-
-.section-links.active {
-  background-color: #d1d1d1;
-  font-weight: bold;
-}
-
-/* Divider */
-hr {
-  border: none;
-  margin: 20px 0;
-  height: 1px;
-  background-color: #ddd;
-}
-
-/* Toggle Button */
-.toggle-button {
-  display: block;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1100;
-  border: none;
-  background: none;
-  font-size: 30px;
-  font-weight: 500;
-  transform: rotate(90deg);
-  color: #333;
-  cursor: pointer;
-}
-
-.close-button {
   display: flex;
-  border: none;
-  background: none;
-  font-size: 20px;
-  font-weight: 500;
-  color: red;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  align-self: flex-end;
+  transition: background-color 0.3s ease;
 }
 
-/* Responsive Design */
-@media screen and (min-width: 778px) {
-  .toggle-button {
-    display: none;
+.section-links:hover,
+.section-links.active {
+  background-color: #444;
+}
+
+.section-links i {
+  margin-right: 10px;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.blue {
+  color: #007bff;
+}
+
+.green {
+  color: #28a745;
+}
+
+@media (max-width: 778px) {
+  .sidebar {
+    transform: translateX(-100%);
   }
-  .close-button {
-    display: none;
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 }

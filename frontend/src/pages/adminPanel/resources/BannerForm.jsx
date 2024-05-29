@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import './PostResources.css';
+import './postForm.css';
 
 const BannerForm = () => {
   const [image, setImage] = useState('');
@@ -29,7 +29,7 @@ const BannerForm = () => {
   };
 
   return (
-    <div className="resources-form">
+    <div className="postform">
       <h1>Add Resource</h1>
       
       <label>
@@ -38,7 +38,7 @@ const BannerForm = () => {
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="resources-form-input"
+          className="postform-input"
         />
       </label>
       
@@ -48,12 +48,12 @@ const BannerForm = () => {
           type="text"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="resources-form-input"
+          className="postform-input"
         />
       </label>
       
-      <button onClick={handleSubmit} className="resources-form-button">Add Resource</button>
-       <button className='back-button' onClick={handleGoBack}>Back</button>
+      <button onClick={handleSubmit} className="postform-button">Add Resource</button>
+       <button className='bac-button' onClick={handleGoBack}>Back</button>
     </div>
   );
 };

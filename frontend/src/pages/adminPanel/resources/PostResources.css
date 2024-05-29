@@ -1,51 +1,64 @@
-.resources-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .resources-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .resources-form label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .resources-form-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 10px;
-  }
-  
-  .resources-form-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .resources-form-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .back-button {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .back-button:hover {
-    text-decoration: none;
-  }
-  
+.post-panel {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.ad-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.post-panel-title {
+  font-size: 24px;
+  color: #333;
+  padding-left: 30px;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.post-panel-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.link-button {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100px;
+  width: 100px;
+}
+
+.link-button span {
+  font-size: 18px;
+}

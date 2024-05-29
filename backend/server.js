@@ -197,6 +197,94 @@ app.patch('/api/jobs/:jobId', async (req, res) => {
   }
 });
 
+
+// slider model
+const SliderData = mongoose.model('SliderData', {
+  image: String,
+  link: String,
+});
+
+// For storing slider data
+app.post('/api/sliderData', async (req, res) => {
+  try {
+    const { image, link } = req.body;
+    const newSliderData = new SliderData({ image, link });
+    await newSliderData.save();
+    res.status(201).json({ message: 'Slider data created', sliderId: newSliderData._id });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
+// For fetching slider data
+app.get('/api/sliderData', async (req, res) => {
+  try {
+    const sliderData = await SliderData.find();
+    res.status(200).json(sliderData);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// course and book model
+const Course = mongoose.model('Course', {
+  title: String,
+  image: String,
+  apply: String,
+});
+
+const Book = mongoose.model('Book', {
+  title: String,
+  image: String,
+  apply: String,
+});
+
+// GET request for courses
+app.get('/api/courses', async (req, res) => {
+  try {
+    const courses = await Course.find();
+    res.json(courses);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// POST request for courses
+app.post('/api/courses', async (req, res) => {
+  try {
+    const { title, image, apply } = req.body;
+    const newCourse = new Course({ title, image, apply });
+    await newCourse.save();
+    res.status(201).json(newCourse);
+  } catch (error) {
+    res.status(400).json({ error: 'Invalid request' });
+  }
+});
+
+// GET request for books
+app.get('/api/books', async (req, res) => {
+  try {
+    const books = await Book.find();
+    res.json(books);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// POST request for books
+app.post('/api/books', async (req, res) => {
+  try {
+    const { title, image, apply } = req.body;
+    const newBook = new Book({ title, image, apply });
+    await newBook.save();
+    res.status(201).json(newBook);
+  } catch (error) {
+    res.status(400).json({ error: 'Invalid request' });
+  }
+});
+
+
 // User profile route
 app.get('/api/profile', verifyToken, async (req, res) => {
   try {

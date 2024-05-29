@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './PostResources.css';
+import './postForm.css';
 
 const BookForm = () => {
   const [title, setTitle] = useState('');
@@ -31,7 +31,7 @@ const BookForm = () => {
   };
 
   return (
-    <div className="resources-form">
+    <div className="postform">
       <h1>Add Book</h1>
       
       <label>
@@ -40,7 +40,7 @@ const BookForm = () => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="resources-form-input"
+          className="postform-input"
         />
       </label>
       
@@ -50,7 +50,7 @@ const BookForm = () => {
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="resources-form-input"
+          className="postform-input"
         />
       </label>
       
@@ -60,12 +60,12 @@ const BookForm = () => {
           type="text"
           value={apply}
           onChange={(e) => setApply(e.target.value)}
-          className="resources-form-input"
+          className="postform-input"
         />
       </label>
       
-      <button onClick={handleSubmit} className="resources-form-button">Add Book</button>
-      <button className='back-button' onClick={handleGoBack}>Back</button>
+      <button onClick={handleSubmit} className="postform-button">Add Book</button>
+      <button className='bac-button' onClick={handleGoBack}>Back</button>
     </div>
   );
 };

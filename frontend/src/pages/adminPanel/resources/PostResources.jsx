@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../adminpanel.css';
+import './PostResources.css';
 
 const PostResources = () => {
   const navigate = useNavigate();
@@ -12,13 +12,12 @@ const PostResources = () => {
   return (
     <div className='post-panel'>
       <div className='ad-head'>
-      <h2 className='admin-panel-title'>Post resources</h2>
-      <button className="back-button" onClick={handleGoBack}>
+        <h2 className='post-panel-title'>Post Resources</h2>
+        <button className="back-button" onClick={handleGoBack}>
           Go Back
         </button>
       </div>
-      <div className='admin-panel-links'>
-        
+      <div className='post-panel-links'>
         <Link to='/postBan' className="link-button card">
           <span>Post Banner</span>
         </Link>

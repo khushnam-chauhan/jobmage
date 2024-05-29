@@ -1,89 +1,90 @@
-.services{
-    height: auto;
+
+.services {
+    padding: 80px 0;
+    background-color: white;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .service-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .service-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  
+  .service-item {
     display: flex;
-    background-repeat: no-repeat;
-    background-size: cover;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 80px;
-    padding-left: 80px;
-    gap: 2rem;
-    margin-bottom: 1rem;
-}
-
-.service-heading{
-    font-size: 35px;
-}
-.service-right{
-    display: flex;
-}
-
-.service-para{
-    font-size: 17px;
-}
-
-.about{
-    display: flex;
-    height: 300px;
-    flex-direction: column;
-    flex: 1;
-    gap: 1rem;
-}
-.service-image{
-    flex: 1;
-    padding-left: 8rem;
-}
-.service-type{
-    gap: 2rem;
-}
-
-.service-jobs{
-    display: flex;
-}
-
-
-img{
-    width: 300px;
-}
-
-
-.service-left{
-    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.9s ease, transform 2.5s ease;
+  }
+  
+  .service-item.reverse {
     flex-direction: row-reverse;
-    gap: 1rem;
-}
-
-@media screen and (max-width: 998px){
-    .about{
-        flex: 1.2;
+  }
+  
+  .service-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .service-content {
+    padding: 40px;
+    flex: 1;
+  }
+  
+  .service-head {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .service-para {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .service-image {
+    flex: 1;
+  }
+  
+  .service-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .service-items {
+      grid-template-columns: 1fr;
     }
-    .service-image{
-        flex: 0.8;
+  
+    .service-item,
+    .service-item.reverse {
+      flex-direction: column;
     }
-    
-}
-
-@media screen and (max-width: 810px){
-    .service-type{
-        display: flex;
-        flex-direction: column;
+  
+    .service-content,
+    .service-image {
+      padding: 20px;
     }
-    .service-right,
-    .service-left{
-        display: flex;
-        flex-direction: column;
-    }
-    .service-image{
-        flex: 1;
-        padding-left: 0;
-    }
-
-}
-
-@media screen and (max-width: 640px){
-    .service-right img{
-        width: 300px;
-    }
-    
-    
-}
+  }

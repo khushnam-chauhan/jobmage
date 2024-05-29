@@ -21,9 +21,7 @@ function Sidebar({ setSelectedPage }) {
     const handleResize = () => {
       setIsSidebarOpen(window.innerWidth > 778);
     };
-
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -38,60 +36,62 @@ function Sidebar({ setSelectedPage }) {
   }
 
   return (
-    <div className={isSidebarOpen ? 'sidebar open' : 'sidebar'}>
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
       <div className="sidebar-container">
-        <div className="sidebar-logo">
-          <Link to="/" className="Link">
-            <span className="blue">Job</span>
-            <span className="green">Mage</span>
-          </Link>
+        <div className="sidebar-header">
+          <div className="sidebar-logo">
+            <Link to="/" className="Link">
+              <span className="blue">Job</span>
+              <span className="green">Mage</span>
+            </Link>
+          </div>
+          <button className="toggle-button" onClick={toggleSidebar}>
+            <i className={`fas fa-${isSidebarOpen ? 'times' : 'bars'}`}></i>
+          </button>
         </div>
         <div className="sidebar-user">
-          <div className="user-info"> Hi, {userData?.username || 'guest'}</div>
+          <div className="user-info">Hi, {userData?.username || 'guest'}</div>
         </div>
         <div className="sidebar-links">
           <div
-            className={selectedLink === 'jobs' ? 'section-links active' : 'section-links'}
+            className={`section-links ${selectedLink === 'jobs' ? 'active' : ''}`}
             onClick={() => handleLinkClick('jobs')}
           >
-            Jobs
+            <i className="fas fa-briefcase"></i>
+            <span>Jobs</span>
           </div>
           <div
-            className={selectedLink === 'resources' ? 'section-links active' : 'section-links'}
+            className={`section-links ${selectedLink === 'resources' ? 'active' : ''}`}
             onClick={() => handleLinkClick('resources')}
           >
-            Resources
+            <i className="fas fa-book"></i>
+            <span>Resources</span>
           </div>
           <div
-            className={selectedLink === 'feeds' ? 'section-links active' : 'section-links'}
+            className={`section-links ${selectedLink === 'feeds' ? 'active' : ''}`}
             onClick={() => handleLinkClick('feeds')}
           >
-            Feeds
+            <i className="fas fa-rss"></i>
+            <span>Feeds</span>
           </div>
-        
           <div
-            className={selectedLink === 'settings' ? 'section-links active' : 'section-links'}
+            className={`section-links ${selectedLink === 'settings' ? 'active' : ''}`}
             onClick={() => handleLinkClick('settings')}
           >
-            Settings
+            <i className="fas fa-cog"></i>
+            <span>Settings</span>
           </div>
           {userData?.role === 'admin' && (
             <div
-              className={selectedLink === 'admin' ? 'section-links active' : 'section-links'}
+              className={`section-links ${selectedLink === 'admin' ? 'active' : ''}`}
               onClick={() => handleLinkClick('admin')}
             >
-              Admin
+              <i className="fas fa-user-shield"></i>
+              <span>Admin</span>
             </div>
           )}
-          <button className="close-button" onClick={toggleSidebar}>
-            close
-          </button>
         </div>
       </div>
-      <hr />
-      <button className="toggle-button" onClick={toggleSidebar}>
-        |||
-      </button>
     </div>
   );
 }

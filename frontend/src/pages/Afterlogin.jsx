@@ -54,7 +54,6 @@ function Afterlogin() {
     <div className="afterlogin">
       <Sidebar setSelectedPage={setSelectedPage} userData={userData} />
       <div className="page-content">{renderPage()}</div>
-      
     </div>
   );
 }
