@@ -10,6 +10,10 @@ const BannerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!image || !link) {
+      alert('Please fill in all fields');
+      return;
+    }
     try {
       await axios.post('http://localhost:5001/api/sliderData', {
         image,
@@ -40,6 +44,7 @@ const BannerForm = () => {
           onChange={(e) => setImage(e.target.value)}
           className="postform-input"
           placeholder="Enter image URL"
+          required
         />
       </label>
       
@@ -51,6 +56,7 @@ const BannerForm = () => {
           onChange={(e) => setLink(e.target.value)}
           className="postform-input"
           placeholder="Enter link URL"
+          required
         />
       </label>
       

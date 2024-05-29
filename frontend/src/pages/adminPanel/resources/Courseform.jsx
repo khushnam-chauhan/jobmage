@@ -11,6 +11,10 @@ const CourseForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!title || !image || !apply) {
+      alert('Please fill in all fields');
+      return;
+    }
     try {
       await axios.post('http://localhost:5001/api/courses', {
         title,
@@ -41,6 +45,8 @@ const CourseForm = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="postform-input"
+          placeholder="Enter title"
+          required
         />
       </label>
       
@@ -51,6 +57,8 @@ const CourseForm = () => {
           value={image}
           onChange={(e) => setImage(e.target.value)}
           className="postform-input"
+          placeholder="Enter image URL"
+          required
         />
       </label>
       
@@ -61,11 +69,13 @@ const CourseForm = () => {
           value={apply}
           onChange={(e) => setApply(e.target.value)}
           className="postform-input"
+          placeholder="Enter apply URL"
+          required
         />
       </label>
       
       <button onClick={handleSubmit} className="postform-button">Add Course</button>
-      <button className='bac-button' onClick={handleGoBack}>Back</button>
+      <button className='back-button' onClick={handleGoBack}>Back</button>
     </div>
   );
 };

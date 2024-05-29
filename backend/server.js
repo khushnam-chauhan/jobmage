@@ -314,6 +314,20 @@ app.put('/api/courses/:id', async (req, res) => {
     res.status(400).json({ error: 'Invalid request' });
   }
 });
+// DELETE request for deleting a course
+app.delete('/api/courses/:id', async (req, res) => {
+  try {
+    const deletedCourse = await Course.findByIdAndDelete(req.params.id);
+
+    if (!deletedCourse) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    res.json({ message: 'Course deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 
 // GET request for books
@@ -358,6 +372,20 @@ app.put('/api/books/:id', async (req, res) => {
   }
 });
 
+// DELETE request for deleting a book
+app.delete('/api/books/:id', async (req, res) => {
+  try {
+    const deletedBook = await Book.findByIdAndDelete(req.params.id);
+
+    if (!deletedBook) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.json({ message: 'Book deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 
 // User profile route
