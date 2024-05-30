@@ -1,0 +1,36 @@
+.self-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    text-align: center;
+    width: 250px;
+    margin: 16px;
+    background-color: #fff;
+  }
+  
+  .self-card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .self-card-title {
+    font-size: 1.5em;
+    margin: 16px 0;
+  }
+  
+  .self-card-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .self-card-button:hover {
+    background-color: #0056b3;
+  }
+  

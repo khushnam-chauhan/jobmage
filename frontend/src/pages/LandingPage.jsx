@@ -6,7 +6,9 @@ import Contact from '../component/Contact/Contact';
 import Footer from '../component/footer/Footer';
 import useUserData from '../component/Hooks/useUserdata';
 import Loader from '../component/Loader/loader';
-
+import VideoBackground from '../component/home/VideoBackground';
+import Testimonials from '../component/home/Testimonials';
+import SocialProof from '../component/home/SocialProof';
 function LandingPage() {
   const { userData, isLoading } = useUserData();
 
@@ -17,12 +19,16 @@ function LandingPage() {
   return (
     <div>
       <Navbar userData={userData} />
+      
       <Home />
       <Services />
-      <Contact  />
+      <VideoBackground />
+      <Testimonials />
+      <SocialProof />
+      <Contact />
       <Footer />
     </div>
   );
 }
 
-export default LandingPage
+export default LandingPage;

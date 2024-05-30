@@ -348,23 +348,28 @@ slots:
 
 responses:
   utter_greet:
-    - text: "Hey! I am Pheonix.\nI am a Jobmage bot.\n Only recommended job roles.\n
-    \n
-    Here are some domains for career guidance\n
-    1. Software Development\n
-    2. UX Designer\n
-    3. QA Tester\n
-    4. UI Designer\n
-    5. AI & ML\n
-    6. Cyber Security\n
-    7. Data Science Bigdata\n
-    8. Cloud Computing\n
-    9. Mobile App Development\n
-    10. Web Development\n
-    11. Database Management\n
-    12. Networking\n
-    13. Flutter Development\n
-    14. Embedded Systems"
+    - text: |
+        Hey! I am TechSage.
+        I can help you with info about different domains in 
+        Computer Science and Engineering (CSE),
+        skills required to become one, and 
+        provide you with a roadmap.
+        Here are some domains for career guidance: 
+        1. Software Development
+        2. UX Designer
+        3. QA Tester
+        4. UI Designer
+        5. AI & ML
+        6. Cyber Security
+        7. Data Science Bigdata
+        8. Cloud Computing
+        9. Mobile App Development
+        10. Web Development
+        11. Database Management
+        12. Networking
+        13. Flutter Development
+        14. Embedded Systems
+
 
 
   utter_cheer_up:

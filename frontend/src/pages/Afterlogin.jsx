@@ -3,11 +3,11 @@ import axios from "axios";
 import "./afterlogin.css";
 import Sidebar from "../component/sidebar/Sidebar";
 import Jobs from "./Jobs/Jobs";
-import Feeds from "./feeds/Feeds";
 import Resources from "./resources/Resources";
 import ChatBot from "./ChatBot/ChatBot";
 import UserProfile from "./profile/UserProfile";
 import AdminPanel from "./adminPanel/AdminPanel"; 
+import SelfAssessment from "./SelfAssessment/SelfAssessment";
 
 function Afterlogin() {
   const [selectedPage, setSelectedPage] = useState("jobs");
@@ -37,8 +37,8 @@ function Afterlogin() {
         return <Jobs />;
       case "resources":
         return <Resources />;
-      case "feeds":
-        return <Feeds />;
+      case "self":
+        return <SelfAssessment />;
       case "chatbot":
         return <ChatBot />;
       case "settings":

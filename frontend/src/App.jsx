@@ -17,6 +17,8 @@ import BookForm from './pages/adminPanel/resources/Bookform';
 import CourseForm from './pages/adminPanel/resources/Courseform';
 import BannerForm from './pages/adminPanel/resources/BannerForm';
 import ResourceManagement from './pages/adminPanel/resources/ResourceMangement';
+import SelfAssessment from './pages/SelfAssessment/SelfAssessment';
+import SkillLevelContent from './pages/SelfAssessment/components/skillLevel/SkillLevel';
 
 function App() {
   const [isChatOpen, setIsChatOpen] = React.useState(false);
@@ -47,6 +49,8 @@ function App() {
         <Route exact path="/postCourse" element={<CourseForm />} />
         <Route exact path="/postBan" element={<BannerForm />} />
         <Route exact path="/ResManage" element={<ResourceManagement />} />
+        <Route exact path="/self" element={<SelfAssessment />} />
+        <Route path="/skill/:card" element={<SkillLevelContent />} />
       </Routes>
       {!hideChatBot && (
         <>

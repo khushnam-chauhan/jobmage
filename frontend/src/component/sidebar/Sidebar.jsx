@@ -45,9 +45,7 @@ function Sidebar({ setSelectedPage }) {
               <span className="green">Mage</span>
             </Link>
           </div>
-          <button className="toggle-button" onClick={toggleSidebar}>
-            <i className={`fas fa-${isSidebarOpen ? 'times' : 'bars'}`}></i>
-          </button>
+          
         </div>
         <div className="sidebar-user">
           <div className="user-info">Hi, {userData?.username || 'guest'}</div>
@@ -68,11 +66,11 @@ function Sidebar({ setSelectedPage }) {
             <span>Resources</span>
           </div>
           <div
-            className={`section-links ${selectedLink === 'feeds' ? 'active' : ''}`}
-            onClick={() => handleLinkClick('feeds')}
+            className={`section-links ${selectedLink === 'self' ? 'active' : ''}`}
+            onClick={() => handleLinkClick('self')}
           >
             <i className="fas fa-rss"></i>
-            <span>Feeds</span>
+            <span>Self-Assessment</span>
           </div>
           <div
             className={`section-links ${selectedLink === 'settings' ? 'active' : ''}`}

@@ -54,7 +54,12 @@ const ChatBot = ({ isOpen, toggleChat }) => {
       <div className="chatbot-body">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.isBot ? 'bot' : 'user'}`}>
-            {message.text}
+            {message.text.split('\n').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </div>
         ))}
         <div ref={messagesEndRef}></div>

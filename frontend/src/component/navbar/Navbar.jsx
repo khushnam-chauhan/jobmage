@@ -16,7 +16,9 @@ function Navbar({ userData }) {
         </div>
         <div className='nav-links'>
           <div className="nav-item"><Link to="/jobs">Jobs</Link></div>
-          <div className="nav-item"><Link to="/resources">Resources</Link></div>
+          <div className="nav-item">
+          <Link to={isLoggedIn ? "/after" : "/login"}>Ressources</Link>
+          </div>
           <div className="nav-item"><Link to="/roadmap">Roadmap</Link></div>
           <div className="nav-item"><Link to="#contact">Contact</Link></div>
           <div className="nav-item">

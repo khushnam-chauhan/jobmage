@@ -1,0 +1,57 @@
+.skill-level-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .back-button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .back-button:hover {
+    background-color: #45a049;
+  }
+  
+  .skill-level-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .skill-level-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .skill-level-column {
+    flex-basis: 30%;
+  }
+  
+  .skill-level-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .project-list {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .project-list li {
+    margin-bottom: 5px;
+  }
+  
+  .no-data-message {
+    text-align: center;
+    font-style: italic;
+  }
