@@ -11,7 +11,7 @@ app.use(cors());
 
 // Connecting to MongoDB
 mongoose
-  .connect('mongodb+srv://mebhikhelega:HfejPa2HjeFwdBpD@cluster0.0sftqn0.mongodb.net/', {
+  .connect('<server:password>@cluster0.0sftqn0.mongodb.net/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -43,7 +43,6 @@ const Job = mongoose.model('Job', {
 });
 
 // Secret key for JWT
-const secretKey = 'HfejPa2HjeFwdBpD';
 
 // Middleware to verify JWT token
 const verifyToken = (req, res, next) => {
